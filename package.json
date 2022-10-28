@@ -1,0 +1,14 @@
+{
+  "name": "easy-maybe",
+  "version": "0.0.5",
+  "description": "",
+  "main": "lib/index.ts",
+  "types": "@types/easy-maybe/maybe.d.ts",
+  "scripts": {
+    "build": "rm -rf lib && tsc --outDir lib --sourceMap",
+    "prepare": "npm run build",
+    "test": "tsc --noEmit"
+  },
+  "author": "",
+  "license": "MIT"
+}
