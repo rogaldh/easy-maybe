@@ -67,10 +67,24 @@ const combine2 = <A, B>(m: [Maybe<A>, Maybe<B>]): Maybe<[A, B]> => {
   return JustImpl<[A, B]>(list);
 };
 
+const combine3 = <A, B, C>(m: [Maybe<A>, Maybe<B>, Maybe<C>]): Maybe<[A, B, C]> => {
+  const list: [any, any, any] = [undefined, undefined, undefined];
+  const [a, b, c] = m;
+
+  if (isNothing(a) || isNothing(b) || isNothing(c)) return NothingImpl();
+
+  list[0] = MaybeImpl.consume(plunge, a);
+  list[1] = MaybeImpl.consume(plunge, b);
+  list[2] = MaybeImpl.consume(plunge, c);
+
+  return JustImpl<[A, B, C]>(list);
+};
+
 export const Extra = {
   as,
   combine,
   combine2,
+  combine3,
   fork,
   forkJust,
   isJust,
